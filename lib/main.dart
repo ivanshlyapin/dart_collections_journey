@@ -1,7 +1,9 @@
 import 'dart:math';
+import 'names.dart';
 
 void main() {
   runTask1();
+  runTask2();
 }
 
 void runTask1() {
@@ -33,4 +35,20 @@ void runTask1() {
     }
   }
   print('Кількість парних чисел у temp: ${temp.length}');
+}
+
+void runTask2() {
+  print('Task 2 --------------------------------------');
+
+  Set<String> uniqueNames1 = ukrainianNames1.toSet();
+  Set<String> uniqueNames2 = ukrainianNames2.toSet();
+
+  Set<String> common = uniqueNames1.intersection(uniqueNames2);
+  print('Спільних імен: ${common.length}');
+
+  Set<String> onlyIn1 = uniqueNames1.difference(uniqueNames2);
+  print('Тільки в першому списку: $onlyIn1');
+
+  Set<String> onlyIn2 = uniqueNames2.difference(uniqueNames1);
+  print('Тільки в другому списку: $onlyIn2');
 }
