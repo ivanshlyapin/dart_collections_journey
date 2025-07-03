@@ -1,9 +1,11 @@
 import 'dart:math';
 import 'names.dart';
+import 'package:word_generator/word_generator.dart';
 
 void main() {
   runTask1();
   runTask2();
+  runTask3();
 }
 
 void runTask1() {
@@ -51,4 +53,24 @@ void runTask2() {
 
   Set<String> onlyIn2 = uniqueNames2.difference(uniqueNames1);
   print('Тільки в другому списку: $onlyIn2');
+}
+
+
+void runTask3() {
+  print('Task 3 --------------------------------------');
+  final wordGenerator = WordGenerator();
+  List<String> nounsList = wordGenerator.randomNouns(50);
+
+  Map<String, int> nounsMap = {
+    for (var word in nounsList) word: word.length,
+  };
+
+  Map<String, int> tempNouns = {};
+  for (var entry in nounsMap.entries) {
+    if (entry.value % 2 == 0) {
+      tempNouns[entry.key] = entry.value;
+    }
+  }
+
+  print('Ключі з парною довжиною: ${tempNouns.keys.toList()}');
 }
